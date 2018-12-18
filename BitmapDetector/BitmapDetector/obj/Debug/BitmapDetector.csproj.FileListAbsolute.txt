@@ -1,0 +1,9 @@
+D:\System Storage\Development\FOE\BitmapDetector\BitmapDetector\bin\Debug\BitmapDetector.exe
+D:\System Storage\Development\FOE\BitmapDetector\BitmapDetector\bin\Debug\BitmapDetector.pdb
+D:\System Storage\Development\FOE\BitmapDetector\BitmapDetector\obj\Debug\BitmapDetector.csprojAssemblyReference.cache
+D:\System Storage\Development\FOE\BitmapDetector\BitmapDetector\obj\Debug\BitmapDetector.BitmapDetectorForm.resources
+D:\System Storage\Development\FOE\BitmapDetector\BitmapDetector\obj\Debug\BitmapDetector.Properties.Resources.resources
+D:\System Storage\Development\FOE\BitmapDetector\BitmapDetector\obj\Debug\BitmapDetector.csproj.GenerateResource.cache
+D:\System Storage\Development\FOE\BitmapDetector\BitmapDetector\obj\Debug\BitmapDetector.csproj.CoreCompileInputs.cache
+D:\System Storage\Development\FOE\BitmapDetector\BitmapDetector\obj\Debug\BitmapDetector.exe
+D:\System Storage\Development\FOE\BitmapDetector\BitmapDetector\obj\Debug\BitmapDetector.pdb
