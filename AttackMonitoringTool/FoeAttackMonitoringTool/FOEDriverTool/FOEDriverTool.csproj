@@ -74,8 +74,22 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\close.png" />
-    <Content Include="Resources\gvg.png" />
+    <Content Include="Resources\AA.png" />
+    <Content Include="Resources\Back.png" />
+    <Content Include="Resources\CA.png" />
+    <Content Include="Resources\CE.png" />
+    <Content Include="Resources\Close.png" />
+    <Content Include="Resources\EMA.png" />
+    <Content Include="Resources\F.png" />
+    <Content Include="Resources\Gvg.png" />
+    <Content Include="Resources\HMA.png" />
+    <Content Include="Resources\IA.png" />
+    <Content Include="Resources\IndA.png" />
+    <Content Include="Resources\LMA.png" />
+    <Content Include="Resources\ME.png" />
+    <Content Include="Resources\PE.png" />
+    <Content Include="Resources\PME.png" />
+    <Content Include="Resources\T.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Selenium.WebDriver.ChromeDriver.2.45.0\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.ChromeDriver.2.45.0\build\Selenium.WebDriver.ChromeDriver.targets')" />

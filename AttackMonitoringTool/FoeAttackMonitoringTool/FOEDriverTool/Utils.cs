@@ -2,6 +2,7 @@
 using OpenQA.Selenium.Interactions;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -105,7 +106,8 @@ namespace FOEDriverTool
             }
             catch (Exception ex)
             {
-                // handle
+                Console.WriteLine($"Error message: {ex.Message},\nCallStack: {ex.StackTrace}");
+                Debug.WriteLine($"Error message: {ex.Message},\nCallStack: {ex.StackTrace}");
             }
             return stitchedImage;
         }
@@ -128,7 +130,59 @@ namespace FOEDriverTool
             }
             catch (Exception ex)
             {
-                // handle
+                Console.WriteLine($"Error message: {ex.Message},\nCallStack: {ex.StackTrace}");
+                Debug.WriteLine($"Error message: {ex.Message},\nCallStack: {ex.StackTrace}");
+            }
+        }
+
+        public static void MovedownLocation(this IJavaScriptExecutor _driver)
+        {
+            try
+            {
+                int X = 100,
+                    Y = 600;
+                var wd = (IWebDriver)_driver;
+                Actions action = new Actions(wd);
+                var body = wd.FindElement(By.XPath(".//body"));
+                var img = wd.FindElement(By.ClassName("raguImg"));
+                
+                //action
+                //    .MoveByOffset(X, Y)
+                //    .ClickAndHold()
+                //    .MoveByOffset(X, Y - 400)
+                //    .Click()
+                //    .Build()
+                //    .Perform();
+                action
+                    .MoveToElement(img)
+                    .ClickAndHold()
+                    .MoveByOffset(img.Location.X, img.Location.Y + 600)
+                    .Build()
+                    .Perform();
+                //action.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error message: {ex.Message},\nCallStack: {ex.StackTrace}");
+                Debug.WriteLine($"Error message: {ex.Message},\nCallStack: {ex.StackTrace}");
+            }
+        }
+        public static void ZoomoutView(this IJavaScriptExecutor _driver)
+        {
+            try
+            {
+                var wd = (IWebDriver)_driver;
+                Actions action = new Actions(wd);
+                var html = wd.FindElement(By.TagName("html"));
+                action
+                    .SendKeys(html, Keys.Control + Keys.Add)
+                    .Perform();
+                //action.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error message: {ex.Message},\nCallStack: {ex.StackTrace}");
+                Debug.WriteLine($"Error message: {ex.Message},\nCallStack: {ex.StackTrace}");
             }
         }
     }

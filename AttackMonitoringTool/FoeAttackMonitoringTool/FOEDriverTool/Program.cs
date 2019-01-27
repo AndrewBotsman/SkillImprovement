@@ -18,7 +18,6 @@ namespace FOEDriverTool
         private static IJavaScriptExecutor _driver;
         private static readonly string DriverPath = @"C:\Users\Admin\.nuget\packages\selenium.webdriver.chromedriver\2.45.0\driver\win32";
         private static readonly string WorldPath = @"https://ru13.forgeofempires.com/game/index?ref=";
-        private static int _attempts = 0;
 
         static void Main(string[] args)
         {
@@ -55,35 +54,154 @@ namespace FOEDriverTool
 
         private static void StartProcessing()
         {
-            throw new NotImplementedException();
+            var afterLoadPics = new Dictionary<string, List<Bitmap>>
+            {
+                {
+                    "IA",
+                    new List<Bitmap>
+                    {
+                        new Bitmap(Resources.IA),
+                        _driver.GetEntereScreenshot()
+                    }
+
+                },
+                {
+                    "EMA",
+                    new List<Bitmap>
+                    {
+                        new Bitmap(Resources.EMA),
+                        _driver.GetEntereScreenshot()
+                    }
+
+                },
+                {
+                    "HMA",
+                    new List<Bitmap>
+                    {
+                        new Bitmap(Resources.HMA),
+                        _driver.GetEntereScreenshot()
+                    }
+
+                },
+                {
+                    "CA",
+                    new List<Bitmap>
+                    {
+                        new Bitmap(Resources.CA),
+                        _driver.GetEntereScreenshot()
+                    }
+
+                },
+                {
+                    "IndA",
+                    new List<Bitmap>
+                    {
+                        new Bitmap(Resources.IndA),
+                        _driver.GetEntereScreenshot()
+                    }
+
+                },
+                {
+                    "PE",
+                    new List<Bitmap>
+                    {
+                        new Bitmap(Resources.PE),
+                        _driver.GetEntereScreenshot()
+                    }
+
+                },
+                {
+                    "ME",
+                    new List<Bitmap>
+                    {
+                        new Bitmap(Resources.ME),
+                        _driver.GetEntereScreenshot()
+                    }
+
+                },
+                {
+                    "PME",
+                    new List<Bitmap>
+                    {
+                        new Bitmap(Resources.PME),
+                        _driver.GetEntereScreenshot()
+                    }
+
+                },
+                {
+                    "CE",
+                    new List<Bitmap>
+                    {
+                        new Bitmap(Resources.CE),
+                        _driver.GetEntereScreenshot()
+                    }
+
+                },
+                {
+                    "T",
+                    new List<Bitmap>
+                    {
+                        new Bitmap(Resources.T),
+                        _driver.GetEntereScreenshot()
+                    }
+
+                },
+                {
+                    "F",
+                    new List<Bitmap>
+                    {
+                        new Bitmap(Resources.F),
+                        _driver.GetEntereScreenshot()
+                    }
+
+                },
+                {
+                    "AA",
+                    new List<Bitmap>
+                    {
+                        new Bitmap(Resources.AA),
+                        _driver.GetEntereScreenshot()
+                    }
+
+                },
+            };
+
+            //var moveDownAges = new List<string>
+            //{
+            //    "EMA",
+            //    "HMA",
+            //    "T",
+            //    "AA",
+            //};
+
+            
+
+            foreach (var item in afterLoadPics)
+            {
+                Debug.WriteLine($"Item: {item.Key}");
+
+                //if (moveDownAges.Contains(item.Key))
+                //{
+                //    _driver.MovedownLocation();
+                //    Thread.Sleep(1000);
+                //}
+
+                CatchItem(item.Value[0], item.Value[1]);
+                Thread.Sleep(5000);
+                CatchItem(new Bitmap(Resources.Back), _driver.GetEntereScreenshot());
+                Thread.Sleep(1000);
+            }
         }
 
         private static void OpenGVGMap()
         {
-            //var wd = ((IWebDriver)_driver);
-            //try
-            //{
-            //    IWebElement canvas = ((IWebDriver)_driver).FindElement(By.TagName("canvas"));
-            //    canvas.SendKeys(Keys.Escape);
-            //    canvas.SendKeys("V");
-            //    Thread.Sleep(5000);
-            //}
-            //catch
-            //{
-            //    if (_attempts > 2)
-            //    {
-            //        OpenGVGMap();
-            //        _attempts++;
-            //    }
-            //}
-
             var afterLoadPics = new Dictionary<string, List<Bitmap>>
             {
                 {
                     "Close",
                     new List<Bitmap>
                     {
-                        new Bitmap(Resources.close),
+                        new Bitmap(Resources.Close),
                         _driver.GetEntereScreenshot()
                     }
 
@@ -92,7 +210,7 @@ namespace FOEDriverTool
                     "GVG",
                     new List<Bitmap>
                     {
-                        new Bitmap(Resources.gvg),
+                        new Bitmap(Resources.Gvg),
                         _driver.GetEntereScreenshot()
                     }
 
@@ -102,16 +220,10 @@ namespace FOEDriverTool
             foreach (var item in afterLoadPics)
             {
                 CatchItem(item.Value[0], item.Value[1]);
+                Thread.Sleep(1000);
             }
 
-            //var bmpToSearch = new Bitmap(Resources.close);
-            //var bmpSource = _driver.GetEntereScreenshot();
-
-            //CatchItem(bmpToSearch, bmpSource);
-
-
-            //bmpToSearch = new Bitmap(Resources.gvg);
-            //bmpSource = _driver.GetEntereScreenshot();
+            _driver.ZoomoutView();
         }
 
         private static void CatchItem(Bitmap bmpToSearch, Bitmap bmpSource)
@@ -122,6 +234,11 @@ namespace FOEDriverTool
                 Debug.WriteLine($"location: {location}");
                 _driver.ClickLocation(location);
             }
+            else
+            {
+                Debug.WriteLine($"location was not found: {location}");
+            }
+
         }
 
         private static void Login()
@@ -150,7 +267,5 @@ namespace FOEDriverTool
             Thread.Sleep(5000);
             ((IWebDriver)_driver).Quit();
         }
-
-
     }
 }
