@@ -1,0 +1,156 @@
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Remote;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace FOEDriverTool
+{
+    class Program
+    {
+        private static IJavaScriptExecutor _driver;
+        private static readonly string DriverPath = @"C:\Users\Admin\.nuget\packages\selenium.webdriver.chromedriver\2.45.0\driver\win32";
+        private static readonly string WorldPath = @"https://ru13.forgeofempires.com/game/index?ref=";
+        private static int _attempts = 0;
+
+        static void Main(string[] args)
+        {
+            InitialLoad();
+            StartProcess();
+        }
+
+        public static void InitialLoad()
+        {
+            _driver = new ChromeDriver(DriverPath);
+            ((IWebDriver)_driver).Manage().Window.Maximize();
+            var script = "window.location = \'" + WorldPath + "\'";
+            ((IJavaScriptExecutor)_driver).ExecuteScript(script);
+        }
+
+        private static void StartProcess()
+        {
+            try
+            {
+                Login();
+                OpenGVGMap();
+                StartProcessing();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error message: {ex.Message},\nCallStack: {ex.StackTrace}");
+                Debug.WriteLine($"Error message: {ex.Message},\nCallStack: {ex.StackTrace}");
+            }
+            finally
+            {
+                FinishProcess();
+            }
+        }
+
+        private static void StartProcessing()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void OpenGVGMap()
+        {
+            //var wd = ((IWebDriver)_driver);
+            //try
+            //{
+            //    IWebElement canvas = ((IWebDriver)_driver).FindElement(By.TagName("canvas"));
+            //    canvas.SendKeys(Keys.Escape);
+            //    canvas.SendKeys("V");
+            //    Thread.Sleep(5000);
+            //}
+            //catch
+            //{
+            //    if (_attempts > 2)
+            //    {
+            //        OpenGVGMap();
+            //        _attempts++;
+            //    }
+            //}
+
+            var afterLoadPics = new Dictionary<string, List<Bitmap>>
+            {
+                {
+                    "Close",
+                    new List<Bitmap>
+                    {
+                        new Bitmap(Resources.close),
+                        _driver.GetEntereScreenshot()
+                    }
+
+                },
+                {
+                    "GVG",
+                    new List<Bitmap>
+                    {
+                        new Bitmap(Resources.gvg),
+                        _driver.GetEntereScreenshot()
+                    }
+
+                },
+            };
+
+            foreach (var item in afterLoadPics)
+            {
+                CatchItem(item.Value[0], item.Value[1]);
+            }
+
+            //var bmpToSearch = new Bitmap(Resources.close);
+            //var bmpSource = _driver.GetEntereScreenshot();
+
+            //CatchItem(bmpToSearch, bmpSource);
+
+
+            //bmpToSearch = new Bitmap(Resources.gvg);
+            //bmpSource = _driver.GetEntereScreenshot();
+        }
+
+        private static void CatchItem(Bitmap bmpToSearch, Bitmap bmpSource)
+        {
+            var location = ImageWorker.autoSearchBitmap(bmpToSearch, bmpSource);
+            if (location.X != 0 && location.Y != 0)
+            {
+                Debug.WriteLine($"location: {location}");
+                _driver.ClickLocation(location);
+            }
+        }
+
+        private static void Login()
+        {
+            var wd = ((IWebDriver)_driver);
+            IWebElement loginUserIdTextBox = wd.FindElement(By.Id("login_userid")),
+                loginPasswordTextBox = wd.FindElement(By.Id("login_password")),
+                loginButton = wd.FindElement(By.Id("login_Login"));
+
+            loginUserIdTextBox.Clear();
+            loginUserIdTextBox.SendKeys("-LuckyStar-");
+            loginPasswordTextBox.Clear();
+            loginPasswordTextBox.SendKeys("funcrack4");
+            loginButton.Click();
+            Thread.Sleep(1000);
+            IWebElement playButton = wd.FindElement(By.Name("play"));
+            playButton.Click();
+            Thread.Sleep(1000);
+            IWebElement worldButton = wd.FindElements(By.TagName("a")).FirstOrDefault(_ => _.Text == "Норсил");
+            worldButton.Click();
+            Thread.Sleep(10000);
+        }
+
+        public static void FinishProcess()
+        {
+            Thread.Sleep(5000);
+            ((IWebDriver)_driver).Quit();
+        }
+
+
+    }
+}

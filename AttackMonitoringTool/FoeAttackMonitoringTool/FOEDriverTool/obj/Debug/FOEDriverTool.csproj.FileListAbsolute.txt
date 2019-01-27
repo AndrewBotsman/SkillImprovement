@@ -1,0 +1,12 @@
+D:\System Storage\Development\Git\SkillImprovement\AttackMonitoringTool\FoeAttackMonitoringTool\FOEDriverTool\obj\Debug\FOEDriverTool.csprojAssemblyReference.cache
+D:\System Storage\Development\Git\SkillImprovement\AttackMonitoringTool\FoeAttackMonitoringTool\FOEDriverTool\obj\Debug\FOEDriverTool.csproj.CoreCompileInputs.cache
+D:\System Storage\Development\Git\SkillImprovement\AttackMonitoringTool\FoeAttackMonitoringTool\FOEDriverTool\bin\Debug\FOEDriverTool.exe.config
+D:\System Storage\Development\Git\SkillImprovement\AttackMonitoringTool\FoeAttackMonitoringTool\FOEDriverTool\bin\Debug\FOEDriverTool.exe
+D:\System Storage\Development\Git\SkillImprovement\AttackMonitoringTool\FoeAttackMonitoringTool\FOEDriverTool\bin\Debug\FOEDriverTool.pdb
+D:\System Storage\Development\Git\SkillImprovement\AttackMonitoringTool\FoeAttackMonitoringTool\FOEDriverTool\bin\Debug\WebDriver.dll
+D:\System Storage\Development\Git\SkillImprovement\AttackMonitoringTool\FoeAttackMonitoringTool\FOEDriverTool\bin\Debug\WebDriver.xml
+D:\System Storage\Development\Git\SkillImprovement\AttackMonitoringTool\FoeAttackMonitoringTool\FOEDriverTool\obj\Debug\FOEDriverTool.csproj.CopyComplete
+D:\System Storage\Development\Git\SkillImprovement\AttackMonitoringTool\FoeAttackMonitoringTool\FOEDriverTool\obj\Debug\FOEDriverTool.exe
+D:\System Storage\Development\Git\SkillImprovement\AttackMonitoringTool\FoeAttackMonitoringTool\FOEDriverTool\obj\Debug\FOEDriverTool.pdb
+D:\System Storage\Development\Git\SkillImprovement\AttackMonitoringTool\FoeAttackMonitoringTool\FOEDriverTool\obj\Debug\FOEDriverTool.Resources.resources
+D:\System Storage\Development\Git\SkillImprovement\AttackMonitoringTool\FoeAttackMonitoringTool\FOEDriverTool\obj\Debug\FOEDriverTool.csproj.GenerateResource.cache
