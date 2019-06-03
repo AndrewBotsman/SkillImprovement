@@ -10,3 +10,15 @@ D:\System Storage\Development\Git\SkillImprovement\AttackMonitoringTool\FoeAttac
 D:\System Storage\Development\Git\SkillImprovement\AttackMonitoringTool\FoeAttackMonitoringTool\FOEDriverTool\obj\Debug\FOEDriverTool.pdb
 D:\System Storage\Development\Git\SkillImprovement\AttackMonitoringTool\FoeAttackMonitoringTool\FOEDriverTool\obj\Debug\FOEDriverTool.Resources.resources
 D:\System Storage\Development\Git\SkillImprovement\AttackMonitoringTool\FoeAttackMonitoringTool\FOEDriverTool\obj\Debug\FOEDriverTool.csproj.GenerateResource.cache
+D:\_devRoot\GitRepositories\SkillImprovement\AttackMonitoringTool\FoeAttackMonitoringTool\FOEDriverTool\bin\Debug\FOEDriverTool.exe.config
+D:\_devRoot\GitRepositories\SkillImprovement\AttackMonitoringTool\FoeAttackMonitoringTool\FOEDriverTool\bin\Debug\FOEDriverTool.exe
+D:\_devRoot\GitRepositories\SkillImprovement\AttackMonitoringTool\FoeAttackMonitoringTool\FOEDriverTool\bin\Debug\FOEDriverTool.pdb
+D:\_devRoot\GitRepositories\SkillImprovement\AttackMonitoringTool\FoeAttackMonitoringTool\FOEDriverTool\bin\Debug\WebDriver.dll
+D:\_devRoot\GitRepositories\SkillImprovement\AttackMonitoringTool\FoeAttackMonitoringTool\FOEDriverTool\bin\Debug\WebDriver.xml
+D:\_devRoot\GitRepositories\SkillImprovement\AttackMonitoringTool\FoeAttackMonitoringTool\FOEDriverTool\obj\Debug\FOEDriverTool.csprojAssemblyReference.cache
+D:\_devRoot\GitRepositories\SkillImprovement\AttackMonitoringTool\FoeAttackMonitoringTool\FOEDriverTool\obj\Debug\FOEDriverTool.Resources.resources
+D:\_devRoot\GitRepositories\SkillImprovement\AttackMonitoringTool\FoeAttackMonitoringTool\FOEDriverTool\obj\Debug\FOEDriverTool.csproj.GenerateResource.cache
+D:\_devRoot\GitRepositories\SkillImprovement\AttackMonitoringTool\FoeAttackMonitoringTool\FOEDriverTool\obj\Debug\FOEDriverTool.csproj.CoreCompileInputs.cache
+D:\_devRoot\GitRepositories\SkillImprovement\AttackMonitoringTool\FoeAttackMonitoringTool\FOEDriverTool\obj\Debug\FOEDriverTool.csproj.CopyComplete
+D:\_devRoot\GitRepositories\SkillImprovement\AttackMonitoringTool\FoeAttackMonitoringTool\FOEDriverTool\obj\Debug\FOEDriverTool.exe
+D:\_devRoot\GitRepositories\SkillImprovement\AttackMonitoringTool\FoeAttackMonitoringTool\FOEDriverTool\obj\Debug\FOEDriverTool.pdb
