@@ -16,7 +16,8 @@ namespace FOEDriverTool
     class Program
     {
         private static IJavaScriptExecutor _driver;
-        private static readonly string DriverPath = @"C:\Users\Admin\.nuget\packages\selenium.webdriver.chromedriver\2.45.0\driver\win32";
+        //private static readonly string DriverPath = Environment.GetEnvironmentVariable("USERPROFILE") + @"\.nuget\packages\selenium.webdriver.chromedriver\74.0.3729.6\driver\win32";
+        private static readonly string DriverPath = Environment.CurrentDirectory + @"\..\..\Resources\driver";
         private static readonly string WorldPath = @"https://ru13.forgeofempires.com/game/index?ref=";
 
         static void Main(string[] args)
