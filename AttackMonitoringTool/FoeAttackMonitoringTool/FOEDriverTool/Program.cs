@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using FOEDriverTool.Enumaration;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Remote;
 using System;
@@ -53,145 +54,114 @@ namespace FOEDriverTool
             }
         }
 
+        private static List<Bitmap> GetAge(string age)
+        {
+            return new List<Bitmap>
+                    {
+                        (Bitmap)Resources.ResourceManager.GetObject(age),
+                        _driver.GetEntereScreenshot()
+                    };
+        }
+
         private static void StartProcessing()
         {
+            /*Func<string, List<Bitmap>> getAge = age =>
+            {
+                return new List<Bitmap>
+                    {
+                        (Bitmap)Resources.ResourceManager.GetObject(age),
+                        _driver.GetEntereScreenshot()
+                    };
+            }; */
+
             var afterLoadPics = new Dictionary<string, List<Bitmap>>
             {
                 {
-                    "IA",
-                    new List<Bitmap>
-                    {
-                        new Bitmap(Resources.IA),
-                        _driver.GetEntereScreenshot()
-                    }
-
+                    Utils.GetStringValue(Age.IA),
+                    GetAge(Utils.GetStringValue(Age.IA))
                 },
                 {
-                    "EMA",
-                    new List<Bitmap>
-                    {
-                        new Bitmap(Resources.EMA),
-                        _driver.GetEntereScreenshot()
-                    }
-
+                    Utils.GetStringValue(Age.EMA),
+                    GetAge(Utils.GetStringValue(Age.EMA))
                 },
                 {
-                    "HMA",
-                    new List<Bitmap>
-                    {
-                        new Bitmap(Resources.HMA),
-                        _driver.GetEntereScreenshot()
-                    }
-
+                    Utils.GetStringValue(Age.HMA),
+                    GetAge(Utils.GetStringValue(Age.HMA))
                 },
                 {
-                    "CA",
-                    new List<Bitmap>
-                    {
-                        new Bitmap(Resources.CA),
-                        _driver.GetEntereScreenshot()
-                    }
-
+                    Utils.GetStringValue(Age.CA),
+                    GetAge(Utils.GetStringValue(Age.CA))
                 },
                 {
-                    "IndA",
-                    new List<Bitmap>
-                    {
-                        new Bitmap(Resources.IndA),
-                        _driver.GetEntereScreenshot()
-                    }
-
+                    Utils.GetStringValue(Age.IndA),
+                    GetAge(Utils.GetStringValue(Age.IndA))
                 },
                 {
-                    "PE",
-                    new List<Bitmap>
-                    {
-                        new Bitmap(Resources.PE),
-                        _driver.GetEntereScreenshot()
-                    }
-
+                    Utils.GetStringValue(Age.PE),
+                    GetAge(Utils.GetStringValue(Age.PE))
                 },
                 {
-                    "ME",
-                    new List<Bitmap>
-                    {
-                        new Bitmap(Resources.ME),
-                        _driver.GetEntereScreenshot()
-                    }
-
+                    Utils.GetStringValue(Age.ME),
+                    GetAge(Utils.GetStringValue(Age.ME))
                 },
                 {
-                    "PME",
-                    new List<Bitmap>
-                    {
-                        new Bitmap(Resources.PME),
-                        _driver.GetEntereScreenshot()
-                    }
-
+                    Utils.GetStringValue(Age.PME),
+                    GetAge(Utils.GetStringValue(Age.PME))
                 },
                 {
-                    "CE",
-                    new List<Bitmap>
-                    {
-                        new Bitmap(Resources.CE),
-                        _driver.GetEntereScreenshot()
-                    }
-
+                    Utils.GetStringValue(Age.CE),
+                    GetAge(Utils.GetStringValue(Age.CE))
                 },
                 {
-                    "T",
-                    new List<Bitmap>
-                    {
-                        new Bitmap(Resources.T),
-                        _driver.GetEntereScreenshot()
-                    }
-
+                    Utils.GetStringValue(Age.T),
+                    GetAge(Utils.GetStringValue(Age.T))
                 },
                 {
-                    "F",
-                    new List<Bitmap>
-                    {
-                        new Bitmap(Resources.F),
-                        _driver.GetEntereScreenshot()
-                    }
-
+                    Utils.GetStringValue(Age.F),
+                    GetAge(Utils.GetStringValue(Age.F))
                 },
                 {
-                    "AA",
-                    new List<Bitmap>
-                    {
-                        new Bitmap(Resources.AA),
-                        _driver.GetEntereScreenshot()
-                    }
-
+                    Utils.GetStringValue(Age.AA),
+                    GetAge(Utils.GetStringValue(Age.AA))
                 },
             };
 
-            //var moveDownAges = new List<string>
-            //{
-            //    "EMA",
-            //    "HMA",
-            //    "T",
-            //    "AA",
-            //};
+            var moveDownAges = new List<string>
+            {
+                Utils.GetStringValue(Age.EMA),
+                Utils.GetStringValue(Age.HMA),
+                Utils.GetStringValue(Age.T),
+                Utils.GetStringValue(Age.AA),
+            };
 
-            
+
 
             foreach (var item in afterLoadPics)
             {
                 Debug.WriteLine($"Item: {item.Key}");
 
-                //if (moveDownAges.Contains(item.Key))
-                //{
-                //    _driver.MovedownLocation();
-                //    Thread.Sleep(1000);
-                //}
+                if (moveDownAges.Contains(item.Key))
+                {
+                    _driver.MovedownLocation();
+                    Thread.Sleep(1000);
+                }
 
+                // Open age
                 CatchItem(item.Value[0], item.Value[1]);
-                Thread.Sleep(5000);
+                Thread.Sleep(1000);
+
+                // Verify attack and make alarm
+                NotifyAttack();
+
+                // Back to GvG map
                 CatchItem(new Bitmap(Resources.Back), _driver.GetEntereScreenshot());
                 Thread.Sleep(1000);
             }
+        }
+
+        private static void NotifyAttack()
+        {
+            
         }
 
         private static void OpenGVGMap()
@@ -200,20 +170,12 @@ namespace FOEDriverTool
             {
                 {
                     "Close",
-                    new List<Bitmap>
-                    {
-                        new Bitmap(Resources.Close),
-                        _driver.GetEntereScreenshot()
-                    }
+                    GetAge("Close")
 
                 },
                 {
                     "GVG",
-                    new List<Bitmap>
-                    {
-                        new Bitmap(Resources.Gvg),
-                        _driver.GetEntereScreenshot()
-                    }
+                    GetAge("GVG")
 
                 },
             };

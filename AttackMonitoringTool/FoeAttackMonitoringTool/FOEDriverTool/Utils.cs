@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using FOEDriverTool.Attribute;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -155,8 +157,9 @@ namespace FOEDriverTool
                 //    .Perform();
                 action
                     .MoveToElement(img)
-                    .ClickAndHold()
-                    .MoveByOffset(img.Location.X, img.Location.Y + 600)
+                    //.ClickAndHold()
+                    //.MoveByOffset(img.Location.X, img.Location.Y + 600)
+                    .DragAndDropToOffset(img, X, Y)
                     .Build()
                     .Perform();
                 //action.Click();
@@ -167,6 +170,7 @@ namespace FOEDriverTool
                 Debug.WriteLine($"Error message: {ex.Message},\nCallStack: {ex.StackTrace}");
             }
         }
+
         public static void ZoomoutView(this IJavaScriptExecutor _driver)
         {
             try
@@ -184,6 +188,20 @@ namespace FOEDriverTool
                 Console.WriteLine($"Error message: {ex.Message},\nCallStack: {ex.StackTrace}");
                 Debug.WriteLine($"Error message: {ex.Message},\nCallStack: {ex.StackTrace}");
             }
+        }
+
+        public static string GetStringValue(Enum value)
+        {
+            string resultValue = null;
+            var type = value.GetType();
+            var fi = type.GetField(value.ToString());
+            StringValue[] attrs = fi.GetCustomAttributes(typeof(StringValue), false) as StringValue[];
+            if (attrs.Length > 0)
+            {
+                resultValue = attrs[0].Value;
+            }
+
+            return resultValue;
         }
     }
 }
