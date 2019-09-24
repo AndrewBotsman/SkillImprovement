@@ -9,15 +9,22 @@ namespace FOEDriverTool.Attribute
     public class StringValue: System.Attribute
     {
         private readonly string _value;
+        private readonly string _description;
 
-        public StringValue(string value)
+        public StringValue(string value, string description = "")
         {
             _value = value;
+            _description = description;
         }
 
         public string Value
         {
             get { return _value; }
+        }
+
+        public string Description
+        {
+            get { return _description; }
         }
     }
 }

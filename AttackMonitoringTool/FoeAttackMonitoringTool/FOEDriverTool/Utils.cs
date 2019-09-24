@@ -190,17 +190,34 @@ namespace FOEDriverTool
             }
         }
 
-        public static string GetStringValue(Enum value)
+        private static StringValue[] GetEnumAttributes(Enum value)
         {
-            string resultValue = null;
             var type = value.GetType();
             var fi = type.GetField(value.ToString());
-            StringValue[] attrs = fi.GetCustomAttributes(typeof(StringValue), false) as StringValue[];
-            if (attrs.Length > 0)
-            {
-                resultValue = attrs[0].Value;
-            }
+            return fi.GetCustomAttributes(typeof(StringValue), false) as StringValue[];
+        }
 
+        public static string GetEnumStringValue(Enum value)
+        {
+            var resultValue = string.Empty;
+            var attributes = GetEnumAttributes(value);
+            if (attributes != null
+                && attributes.Length > 0)
+            {
+                resultValue = attributes[0].Value;
+            }
+            return resultValue;
+        }
+
+        public static string GetEnumDesription(Enum value)
+        {
+            var resultValue = string.Empty;
+            var attributes = GetEnumAttributes(value);
+            if (attributes != null
+                && attributes.Length > 1)
+            {
+                resultValue = attributes[1].Value;
+            }
             return resultValue;
         }
     }

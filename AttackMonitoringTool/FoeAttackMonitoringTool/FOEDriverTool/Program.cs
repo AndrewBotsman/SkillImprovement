@@ -65,76 +65,65 @@ namespace FOEDriverTool
 
         private static void StartProcessing()
         {
-            /*Func<string, List<Bitmap>> getAge = age =>
-            {
-                return new List<Bitmap>
-                    {
-                        (Bitmap)Resources.ResourceManager.GetObject(age),
-                        _driver.GetEntereScreenshot()
-                    };
-            }; */
-
             var afterLoadPics = new Dictionary<string, List<Bitmap>>
             {
                 {
-                    Utils.GetStringValue(Age.IA),
-                    GetAge(Utils.GetStringValue(Age.IA))
+                    Utils.GetEnumStringValue(Age.IA),
+                    GetAge(Utils.GetEnumStringValue(Age.IA))
                 },
                 {
-                    Utils.GetStringValue(Age.EMA),
-                    GetAge(Utils.GetStringValue(Age.EMA))
+                    Utils.GetEnumStringValue(Age.EMA),
+                    GetAge(Utils.GetEnumStringValue(Age.EMA))
                 },
                 {
-                    Utils.GetStringValue(Age.HMA),
-                    GetAge(Utils.GetStringValue(Age.HMA))
+                    Utils.GetEnumStringValue(Age.HMA),
+                    GetAge(Utils.GetEnumStringValue(Age.HMA))
                 },
                 {
-                    Utils.GetStringValue(Age.CA),
-                    GetAge(Utils.GetStringValue(Age.CA))
+                    Utils.GetEnumStringValue(Age.CA),
+                    GetAge(Utils.GetEnumStringValue(Age.CA))
                 },
                 {
-                    Utils.GetStringValue(Age.IndA),
-                    GetAge(Utils.GetStringValue(Age.IndA))
+                    Utils.GetEnumStringValue(Age.IndA),
+                    GetAge(Utils.GetEnumStringValue(Age.IndA))
                 },
                 {
-                    Utils.GetStringValue(Age.PE),
-                    GetAge(Utils.GetStringValue(Age.PE))
+                    Utils.GetEnumStringValue(Age.PE),
+                    GetAge(Utils.GetEnumStringValue(Age.PE))
                 },
                 {
-                    Utils.GetStringValue(Age.ME),
-                    GetAge(Utils.GetStringValue(Age.ME))
+                    Utils.GetEnumStringValue(Age.ME),
+                    GetAge(Utils.GetEnumStringValue(Age.ME))
                 },
                 {
-                    Utils.GetStringValue(Age.PME),
-                    GetAge(Utils.GetStringValue(Age.PME))
+                    Utils.GetEnumStringValue(Age.PME),
+                    GetAge(Utils.GetEnumStringValue(Age.PME))
                 },
                 {
-                    Utils.GetStringValue(Age.CE),
-                    GetAge(Utils.GetStringValue(Age.CE))
+                    Utils.GetEnumStringValue(Age.CE),
+                    GetAge(Utils.GetEnumStringValue(Age.CE))
                 },
                 {
-                    Utils.GetStringValue(Age.T),
-                    GetAge(Utils.GetStringValue(Age.T))
+                    Utils.GetEnumStringValue(Age.T),
+                    GetAge(Utils.GetEnumStringValue(Age.T))
                 },
                 {
-                    Utils.GetStringValue(Age.F),
-                    GetAge(Utils.GetStringValue(Age.F))
+                    Utils.GetEnumStringValue(Age.F),
+                    GetAge(Utils.GetEnumStringValue(Age.F))
                 },
                 {
-                    Utils.GetStringValue(Age.AA),
-                    GetAge(Utils.GetStringValue(Age.AA))
+                    Utils.GetEnumStringValue(Age.AA),
+                    GetAge(Utils.GetEnumStringValue(Age.AA))
                 },
             };
 
             var moveDownAges = new List<string>
             {
-                Utils.GetStringValue(Age.EMA),
-                Utils.GetStringValue(Age.HMA),
-                Utils.GetStringValue(Age.T),
-                Utils.GetStringValue(Age.AA),
+                Utils.GetEnumStringValue(Age.EMA),
+                Utils.GetEnumStringValue(Age.HMA),
+                Utils.GetEnumStringValue(Age.T),
+                Utils.GetEnumStringValue(Age.AA),
             };
-
-
 
             foreach (var item in afterLoadPics)
             {
@@ -151,7 +140,7 @@ namespace FOEDriverTool
                 Thread.Sleep(1000);
 
                 // Verify attack and make alarm
-                NotifyAttack();
+                NotifyAttack(Utils.GetEnumDesription((Age)Enum.Parse(typeof(Age), item.Key)));
 
                 // Back to GvG map
                 CatchItem(new Bitmap(Resources.Back), _driver.GetEntereScreenshot());
@@ -159,9 +148,11 @@ namespace FOEDriverTool
             }
         }
 
-        private static void NotifyAttack()
+        private static void NotifyAttack(string age)
         {
-            
+            var attackCaptured = ItemFound(new Bitmap(Resources.AttackSign), _driver.GetEntereScreenshot());
+            var skype = new SkypeProxy();
+            skype.SendMessage($"{age}");
         }
 
         private static void OpenGVGMap()
@@ -202,6 +193,12 @@ namespace FOEDriverTool
                 Debug.WriteLine($"location was not found: {location}");
             }
 
+        }
+
+        private static bool ItemFound(Bitmap bmpToSearch, Bitmap bmpSource)
+        {
+            var location = ImageWorker.autoSearchBitmap(bmpToSearch, bmpSource);
+            return location.X != 0 && location.Y != 0;
         }
 
         private static void Login()

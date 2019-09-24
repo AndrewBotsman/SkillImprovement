@@ -9,29 +9,29 @@ namespace FOEDriverTool.Enumaration
 {
     public enum Age
     {
-        [StringValue("IA")]
+        [StringValue("IA", "Железный Век")]
         IA = 1,
-        [StringValue("EMA")]
+        [StringValue("EMA", "Раннее Средневековье")]
         EMA,
-        [StringValue("HMA")]
+        [StringValue("HMA", "Высокое Средневековье")]
         HMA,
-        [StringValue("CA")]
+        [StringValue("CA", "Колониальный Период")]
         CA,
-        [StringValue("IndA")]
+        [StringValue("IndA", "Индустриальная Эпоха")]
         IndA,
-        [StringValue("PE")]
+        [StringValue("PE", "Эпоха Прогрессивизма")]
         PE,
-        [StringValue("ME")]
+        [StringValue("ME", "Эпоха Модерна")]
         ME,
-        [StringValue("PME")]
+        [StringValue("PME", "Эпоха Постмодерна")]
         PME,
-        [StringValue("CE")]
+        [StringValue("CE", "Новейшее Время")]
         CE,
-        [StringValue("T")]
+        [StringValue("T", "Завтра")]
         T,
-        [StringValue("F")]
+        [StringValue("F", "Будущее")]
         F,
-        [StringValue("AA")]
+        [StringValue("AA", "Все Эпохи (Медальная)")]
         AA
     }
 }
